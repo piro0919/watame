@@ -1,0 +1,53 @@
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.background {
+  animation: rotate 3000ms linear infinite;
+}
+
+.reverse {
+  animation-name: rotate-reverse;
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(10);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.watame {
+  animation: expand 3000000ms linear infinite;
+  bottom: 0;
+  height: 95%;
+  position: absolute;
+  transform-origin: 50% 25%;
+}

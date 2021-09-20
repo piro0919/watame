@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { CSSProperties, useCallback, useMemo, useState } from "react";
+import gangimari from "./gangimari.png";
+import { useWindowSize } from "@react-hook/window-size";
+import styles from "./style.module.css";
+import stripe from "./stripe.jpg";
 
 function App() {
+  const [width, height] = useWindowSize();
+  const style = useMemo<CSSProperties>(
+    () => ({
+      height: `${height}px`,
+    }),
+    [height]
+  );
+  const backgroundStyle = useMemo<CSSProperties>(
+    () => ({
+      height: `${Math.max(height, width) * 1.5}px`,
+    }),
+    [height, width]
+  );
+  const [reverse, setReverse] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setReverse((prevReverse) => !prevReverse);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.wrapper} style={style}>
+      <img
+        alt="background"
+        className={`${styles.background} ${reverse ? styles.reverse : ""}`}
+        src={stripe}
+        style={backgroundStyle}
+      />
+      <img
+        alt="watame"
+        className={styles.watame}
+        onClick={handleClick}
+        src={gangimari}
+      />
     </div>
   );
 }
