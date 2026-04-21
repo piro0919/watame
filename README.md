@@ -2,7 +2,6 @@
 
 > Interactive fun page with a spinning stripe background.
 
-[🔗 Live Site](http://watame.kkweb.io/)
 
 ## ✨ Features
 
